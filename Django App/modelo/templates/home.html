@@ -1,0 +1,55 @@
+{% load static %}
+<style>
+    .arrows::-webkit-outer-spin-button,
+    .arrows::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        -moz-appearance: textfield;
+    }
+
+
+</style>
+
+<a class="hero-logo" data-aos="zoom-in"><img width="40%" src="{% static 'img/logo.png' %}" alt=""></a>
+<h1 data-aos="zoom-in">Bienvenido a Uninet</h1>
+<h2 data-aos="fade-up">Recomendación de asignaturas para estudiantes de la unimet</h2>
+<a data-aos="fade-up" id="start" class="btn-get-started scrollto">Comenzar</a>
+
+<script>
+
+    {% if error %}
+        $(document).ready(function () {
+            swal.fire('{{ error }}', '', 'error');
+        });
+    {% endif %}
+
+
+
+    $('#start').on('click', function () {
+        swal.fire({
+            title: 'Ingrese su número de cédula',
+            icon: 'info',
+            input: 'number',
+            confirmButtonText: 'Continuar',
+            customClass: {
+                input: 'arrows'
+            },
+            inputAttributes: {
+                min: '0'
+            },
+            inputValidator: (value) => {
+                if (!value) {
+                    return 'Escribe una cédula'
+                }
+            }
+        }).then(function (data) {
+            if (data.isConfirmed) {
+                loading();
+                $("#body-content").load('net/' + data.value, function () {
+                    loading(false);
+                });
+            }
+        })
+    });
+
+</script>

@@ -1,0 +1,474 @@
+<style>
+    .materia {
+        color: #aeaeae;
+        font-size: 12px;
+        font-weight: 400;
+        height: 100px;
+        overflow-wrap: break-word
+    }
+
+    .materia_head {
+        height: 20px !important;
+    }
+
+    td {
+        vertical-align: middle !important;
+    }
+
+    .materia_vista {
+        background-color: green;
+        color: white;
+    }
+
+    .materia_no_existe {
+        background-color: red;
+        color: white;
+    }
+
+    .materia_porver:hover {
+        color: black;
+        background-color: white;
+        -moz-transition: all 0.3s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.3s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.3s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.3s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        cursor: pointer;
+    }
+
+    .trantition_materia_selected {
+        transform: scale(1.5, 1.5);
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    .materia_selected {
+        color: black;
+        background-color: white;
+        cursor: pointer;
+    }
+
+    #number_materias {
+        font-size: 14px;
+        color: white;
+        width: 200px;
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    .table0 {
+        background-color: rgba(83, 51, 237, 0.3);
+        height: 559px;
+        padding: 0.5%;
+        border-radius: 11px;
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    .table1 {
+        height: 559px;
+        padding: 0.5%;
+        border-radius: 11px;
+        background-color: rgba(255, 20, 147, 0.3);
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    .table2 {
+        height: 559px;
+        padding: 0.5%;
+        border-radius: 11px;
+        background-color: rgba(248, 148, 6, 0.3);
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    .btn_table {
+        padding: 10px 15px !important;
+        margin: 10px;
+        color: black;
+        background-color: white;
+        position: absolute;
+    }
+
+    .btn_table:hover {
+        transform: scale(1.2);
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    #table_0.table_selected {
+        background-color: rgba(83, 51, 237, 1) !important;
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    #table_1.table_selected {
+        background-color: rgba(255, 20, 147, 1) !important;
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    #table_2.table_selected {
+        background-color: rgba(248, 148, 6, 1) !important;
+        -moz-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -o-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        -webkit-transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+        transition: all 0.2s cubic-bezier(0.8, 0.2, 0.2, 0.9);
+    }
+
+    #table_0:hover {
+        background-color: rgba(83, 51, 237, 1) !important;
+    }
+
+    #table_1:hover {
+        background-color: rgba(255, 20, 147, 1) !important;
+    }
+
+    #table_2:hover {
+        background-color: rgba(248, 148, 6, 1) !important;
+    }
+
+</style>
+{% csrf_token %}
+<h5 style="color: white; text-align: left; margin-bottom: 0.2rem;">UNIVERSIDAD METROPOLITANA</h5>
+<h5 style="color: white; text-align: left; margin-bottom: 0.2rem;">FLUJOGRAMA DE {{ carrera }}</h5>
+<h6 style="color: white">Períodos Académicos</h6>
+<div class="table-responsive">
+    <div id="n_table" class="table0">
+        <table class="table table-bordered" style="table-layout: fixed;">
+            <thead>
+            <tr class="materia materia_head">
+                <th scope="col">I</th>
+                <th scope="col">II</th>
+                <th scope="col">III</th>
+                <th scope="col">IV</th>
+                <th scope="col">V</th>
+                <th scope="col">VI</th>
+                <th scope="col">VII</th>
+                <th scope="col">VIII</th>
+                <th scope="col">IX</th>
+                <th scope="col">X</th>
+                <th scope="col">XI</th>
+                <th scope="col">XII</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="row1" class="materia"></tr>
+            <tr id="row2" class="materia"></tr>
+            <tr id="row3" class="materia"></tr>
+            <tr id="row4" class="materia"></tr>
+            <tr id="row5" class="materia"></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="container-fluid d-flex justify-content-end" style="align-items: baseline; padding-right: 0;">
+
+    <div style="position: absolute; left: 175px; margin-right: 0; margin-top: 1px;">
+        <a id="table_0" data-number="0" class="btn btn_table table_selected">
+            1
+        </a>
+        <a id="table_1" data-number="1" class="btn btn_table"
+           style="left: 64px;">
+            +
+        </a>
+        <a id="table_2" data-number="2" class="btn btn_table"
+           style="left: 128px;">
+            +
+        </a>
+    </div>
+
+    <p id="number_materias" style="flex: 1 0 auto; position: absolute; left: 43.5%; bottom: 2%;">
+        0/7 materias seleccionadas
+    </p>
+    <a id="predict" class="btn-get-started" style="margin-right: 143px; margin-top: 7px; padding: 10px 15px;">
+        Realizar Predicción
+    </a>
+</div>
+
+
+<script>
+    var index_group = 0;
+    var materias_groups = [[], [], []]
+    var materias_values = [{}, {}, {}]
+    var materias_op = false;
+    var materias_select = {}
+
+    $(document).ready(function () {
+
+
+        {% autoescape off %}
+            var flujograma = {{ flujograma }};
+
+            // validacion para idiomas
+            {% if materias_op %}
+                materias_op = Object.entries({{ materias_op }})
+                for (var i = 0; i < materias_op.length; i++) {
+                    materias_select[materias_op[i][0]] = materias_op[i][1][1]
+                }
+            {% endif %}
+        {% endautoescape %}
+
+        var aux = 0;
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+        flujograma = Object.entries(flujograma)
+
+        while (aux != 5) {
+            for (var i = aux; i < 60; i += 5) {
+                var row = aux + 1
+
+                if (flujograma[i][1][1] == undefined) {
+
+                    // validacion idiomas
+                    if (flujograma[i][0].includes('BPELI')) {
+                        $('#row' + row).append('<td id="' + flujograma[i][0] + '" name="materia_op" class="materia_porver"> MATERIA DE IDIOMAS </td>')
+                    } else {
+                        $('#row' + row).append('<td class="materia_no_existe"> - </td>')
+                    }
+
+                } else {
+                    // validacion servicio comunitario
+                    if (flujograma[i][0] == 'BPTDI01') {
+                        if (flujograma[i][1][0] == 1) {
+                            $('#row' + row).append('<td id="BPTDI01-2" class="materia_porver"> SERVICIO COMUNITARIO - CONTINUA </td>')
+                        } else if (flujograma[i][1][0] == 0) {
+                            $('#row' + row).append('<td id="BPTDI01-1" class="materia_porver"> SERVICIO COMUNITARIO - INICIO </td>')
+                        } else {
+                            $('#row' + row).append('<td class="materia_vista">' + flujograma[i][1][1] + '</td>')
+                        }
+
+                    } else {
+
+                        if (flujograma[i][1][0] == 1) {
+                            $('#row' + row).append('<td class="materia_vista">' + flujograma[i][1][1] + '</td>')
+                        } else {
+                            $('#row' + row).append('<td id="' + flujograma[i][0] + '" class="materia_porver">' + flujograma[i][1][1] + '</td>')
+                        }
+                    }
+                }
+            }
+            aux++
+        }
+
+        $('.materia_porver').on('click', function () {
+
+            var id = $(this).attr('id')
+
+            if ($(this).hasClass('materia_selected')) {
+
+                if (materias_groups[index_group].length > 0) {
+
+                    // idiomas modernos
+                    if ($(this).attr('name') == 'materia_op') {
+
+                        var index_mat = materias_groups[index_group].indexOf(id);
+                        materias_groups[index_group].splice(index_mat, 1);
+                        delete materias_values[index_group][id];
+                        $('#' + id).text('MATERIA DE IDIOMAS');
+
+                    } else {
+                        var index_mat = materias_groups[index_group].indexOf($(this).attr('id'));
+                        materias_groups[index_group].splice(index_mat, 1);
+                    }
+
+                    $('#number_materias').addClass('trantition_materia_selected');
+                    setTimeout(function () {
+                        $('#number_materias').removeClass('trantition_materia_selected');
+                    }, 400);
+                    $('#' + $(this).attr('id')).removeClass('materia_selected');
+
+                    $('#number_materias').text(materias_groups[index_group].length + '/7 materias seleccionadas')
+                }
+
+                console.log(materias_groups)
+                console.log(materias_values)
+
+            } else {
+                if (materias_groups[index_group].length < 7) {
+
+                    // idiomas modernos
+                    if ($(this).attr('name') == 'materia_op') {
+                        swal.fire({
+                            title: 'IDIOMAS MODERNOS',
+                            text: 'Escoja una materia y presione Listo',
+                            icon: 'info',
+                            input: 'select',
+                            inputPlaceholder: 'Seleccione una materia',
+                            inputOptions: materias_select,
+                            confirmButtonText: 'Listo',
+                            inputValidator: (value) => {
+                                if (!value) {
+                                    return 'Seleccione una materia'
+                                }
+                            }
+                        }).then(function (data) {
+                            if (data.isConfirmed) {
+
+                                for (var i = 0; i < materias_op.length; i++) {
+                                    if (materias_op[i][0] == data.value) {
+                                        $('#' + id).text(materias_op[i][1][1])
+                                    }
+                                }
+                                materias_values[index_group][id] = data.value;
+                                materias_groups[index_group].push(id)
+
+                                console.log(materias_groups)
+                                console.log(materias_values)
+
+                                $('#number_materias').addClass('trantition_materia_selected');
+                                setTimeout(function () {
+                                    $('#number_materias').removeClass('trantition_materia_selected');
+                                }, 400);
+                                $('#' + id).addClass('materia_selected');
+                                $('#number_materias').text(materias_groups[index_group].length + '/7 materias seleccionadas');
+
+                            }
+                        });
+                    } else {
+                        materias_groups[index_group].push(id);
+
+                        $('#number_materias').addClass('trantition_materia_selected');
+                        setTimeout(function () {
+                            $('#number_materias').removeClass('trantition_materia_selected');
+                        }, 400);
+                        $(this).addClass('materia_selected');
+                        $('#number_materias').text(materias_groups[index_group].length + '/7 materias seleccionadas');
+
+                        console.log(materias_groups)
+                        console.log(materias_values)
+                    }
+
+                } else {
+                    swal.fire('Estimado estudiante:', 'Ya ha seleccionado el numero maximo de materias.', 'error');
+                }
+            }
+        });
+
+        $.ajaxSetup({
+            'headers': {
+                'X-CSRFToken': csrftoken,
+            }
+        });
+
+    });
+
+
+    $('#table_0,#table_1,#table_2').on('click', function () {
+        $('#n_table').removeClass();
+        $('#n_table').addClass('table' + $(this).attr('data-number'));
+
+        $('#table_0,#table_1,#table_2').removeClass('table_selected');
+        $('#table_' + $(this).attr('data-number')).addClass('table_selected');
+        $('#table_' + $(this).attr('data-number')).text(parseInt($(this).attr('data-number')) + 1);
+
+        if ($('#table_' + index_group).attr('id') == 'table_1' || $('#table_' + index_group).attr('id') == 'table_2') {
+            if (materias_groups[index_group].length == 0)
+                $('#table_' + index_group).text('+');
+        }
+
+        index_group = $(this).attr('data-number');
+        $('#number_materias').addClass('trantition_materia_selected');
+        setTimeout(function () {
+            $('#number_materias').removeClass('trantition_materia_selected');
+        }, 400);
+        $('#number_materias').text(materias_groups[index_group].length + '/7 materias seleccionadas');
+        console.log(materias_groups[index_group]);
+
+        $("td").removeClass('materia_selected');
+        $("td").each(function () {
+
+            if ($(this).attr('name') == 'materia_op') {
+                $(this).text('MATERIA DE IDIOMAS');
+            }
+
+            for (var i = 0; i < materias_groups[index_group].length; i++) {
+
+                if ($(this).attr("id") == materias_groups[index_group][i]) {
+
+                    if (materias_values[index_group][$(this).attr("id")] != undefined) {
+                        $(this).text(materias_select[materias_values[index_group][$(this).attr("id")]]);
+                    }
+
+                    $(this).addClass('materia_selected');
+                    break
+                }
+
+
+            }
+        });
+
+        console.log(materias_groups)
+        console.log(materias_values)
+
+    });
+
+
+    $('#predict').on('click', function () {
+
+        var no_mat = true;
+        for (var i = 0; i < materias_groups.length; i++) {
+            if (materias_groups[i].length != 0) {
+                no_mat = false;
+            }
+        }
+        if (no_mat) {
+            swal.fire('', 'No se han seleccionado materias a predecir en ningún grupo', 'error');
+            return
+        }
+
+
+        swal.fire({
+            text: '¿Desea realizar la predicción con los grupos de materias seleccionados?',
+            confirmButtonText: 'Predecir',
+            showCancelButton: true,
+            cancelButtonText: 'Volver',
+            icon: 'warning'
+        }).then(function (data) {
+            if (data.isConfirmed) {
+
+                //corregir codigo de electivas
+                for (var i = 0; i < materias_groups.length; i++) {
+                    for (var j = 0; j < materias_groups[i].length; j++) {
+                        if (materias_groups[i][j].includes('FGE0000')) {
+                            materias_groups[i][j] = 'FGE0000'
+                            continue
+                        }
+                        if (materias_groups[i][j].includes('BPELIX')) {
+                            materias_groups[i][j] = materias_values[i][materias_groups[i][j]]
+                        }
+                    }
+                }
+
+                console.log(materias_groups)
+
+                loading();
+                $("#body-content").load('predict/' + {{ ci }}, {
+                    'materias': materias_groups
+                }, function () {
+                    loading(false);
+                });
+            }
+
+        });
+    });
+
+
+</script>

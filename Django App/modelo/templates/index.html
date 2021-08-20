@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Uninet</title>
+
+    <link href="{% static 'node_modules/bootstrap/dist/css/bootstrap.css' %}" rel="stylesheet"/>
+    <link href="{% static 'node_modules/sweetalert2/dist/sweetalert2.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/aos/aos.css' %}" rel="stylesheet"/>
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}"/>
+
+</head>
+<body>
+
+{% include 'loader.html' %}
+
+<section id="hero">
+    <div class="hero-container">
+        <div id="body-content"></div>
+    </div>
+</section>
+
+<script src="{% static 'node_modules/jquery/dist/jquery.js' %}"></script>
+<script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.js' %}"></script>
+<script src="{% static 'node_modules/sweetalert2/dist/sweetalert2.js' %}"></script>
+<script src="{% static 'css/aos/aos.js' %}"></script>
+
+<script>
+    $(document).ready(function () {
+
+        AOS.init({
+            duration: 600,
+            once: true
+        });
+
+        loading();
+        $("#body-content").load('{% url "home" %}', function () {
+            loading(false);
+        });
+
+//        $("#body-content").load('{% url "resultados" %}', function () {
+//            loading(false);
+//        });
+
+    });
+
+    function loading(set = true) {
+        if (set) {
+            $('#loader').addClass('loading-container');
+            $('#hero').addClass('blurry-hero');
+        } else {
+            $('#loader').removeClass('loading-container');
+            $('#hero').removeClass('blurry-hero');
+        }
+    }
+
+
+</script>
+
+</body>
+</html>
