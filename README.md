@@ -13,19 +13,19 @@
  embedding layer, allowing the deep learning model to escalate to all the careers dictated in the Universidad Metropolitana. This modification allows the recommendation 
  system to work for all the undergraduate careers of any university.
 
- ![Results Metrics](http://url/to/img.png)
- 
+ ![Model Architecture](https://github.com/GilbertoPucciarelli/uninet-pucciarelli-tatoli/blob/main/Images/Model%20Architecture.png)
+  
  The results for this research are the following: we have achieved a binary accuracy of 72,78% and AUC (Area Under the Curve) of 79,79% for the validation dataset, compared
  to 76,78% and 82,80% respectively of Araque, Rojas and Vitali model.  
  
- ![Results Metrics](http://url/to/img.png) 
+ ![Results Metrics](https://github.com/GilbertoPucciarelli/uninet-pucciarelli-tatoli/blob/main/Images/Results%20Metrics.png) 
  
   We have successfully applied a convolutional recurrent neural network for academic performance prediction, refining the model previously proposed and using it 
   as a recommendation technique for next term course combination. As well as prior work on this task, we only used past academic performance (course grades) ordered 
   chronologically to predict next term academic success and we were able to develop a dense input vector representation for the historic academic terms with their respective 
   grades. 
 
-  The modification of the architecture proposed by Araque et al. [2] into a ConvLSTM was a key component of the architecture to model how grades evolve from the first term of 
+  The modification of the architecture proposed by Araque et al. into a ConvLSTM was a key component of the architecture to model how grades evolve from the first term of 
   the students to later ones, how this evolution influences the probability of success in the future terms and allowed the deep learning model to escalate to all the careers 
   dictated in the Universidad Metropolitana.
  
